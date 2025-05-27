@@ -1,21 +1,18 @@
+package Exercicio_04;
+
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.JFrame;
 
 public class Game extends Canvas implements Runnable{
 
-	int x = 0;
-	int y = 0;
+
+	int right = 0, left = 1, top = 2, down = 3;
+	int dir = right;
+	int x = 0, y = 0;
 	
 	int maxDistance = 240;
 	boolean chegou = false;
