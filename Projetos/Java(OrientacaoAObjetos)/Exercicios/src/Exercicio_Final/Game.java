@@ -15,11 +15,16 @@ public class Game extends Canvas implements Runnable, MouseListener{
 	int right = 0, left = 1, up = 2, down = 3;
 	int dir = right;
 	int x = 0, y = 0;
+
+	int mx = -100, my = -100;
+
+	boolean isPressed = false;
 	
 	int maxDistance = 240;
 	boolean chegou = false;
 	
 	public Game() {
+		this.addMouseListener(this);
 		this.setPreferredSize(new Dimension(480,480));
 	}
 	
@@ -27,16 +32,16 @@ public class Game extends Canvas implements Runnable, MouseListener{
 		//1) Identificar a direção:
 		if(dir == right)
 		{
-			x+=4;
+			x+=2;
 		}else if(dir == left)
 		{
-			x-=4;
+			x-=2;
 		}else if(dir == up)
 		{
-			y-=4;
+			y-=2;
 		}else if(dir == down)
 		{
-			y+=4;
+			y+=2;
 		}
 		//2) Mudar a direção:
 		if(x+50 >= 480 && y == 0)
@@ -50,7 +55,19 @@ public class Game extends Canvas implements Runnable, MouseListener{
 		}else if(x <=0 && y <= 0){
 			dir = right;
 		}
-		
+
+		if(isPressed){
+			isPressed = false;
+		detectarClique();
+		}
+	}
+
+	public void detectarClique(){
+		if(mx >= x && mx <= x+50){
+			if(my >= y && my <= y+50){
+			System.out.println("Clicado!");
+		}
+		}
 	}
 	
 	public void render() {
@@ -116,8 +133,9 @@ public class Game extends Canvas implements Runnable, MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'mouseClicked'");
+		mx = e.getX();
+		my = e.getY();
+		isPressed = true;
 	}
 
 	@Override
