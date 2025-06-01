@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <style type="text/css">
+            .header{
+                width: 100%;
+                height: 50px;
+                border: 2px solid black;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="header"></div>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script>
+            $(function(){
+
+
+                
+                function verficarTamanhoEAplicarCor(){
+                    var tamanhoTela = $(window).width();
+                    if(tamanhoTela <580){
+                       $('.header').css('background-color', 'blue');
+                    }
+                    else if(tamanhoTela <768){
+                       $('.header').css('background-color', 'red');
+                    }else if(tamanhoTela < 1024){
+                        $('.header').css('background-color', 'green');
+                    }else{
+                        $('.header').css('background-color', 'white');
+                    }
+                }
+                verficarTamanhoEAplicarCor();
+                
+                setInterval(function() {
+                    verficarTamanhoEAplicarCor();
+                }, 3000);
+
+                $(window).resize(function() {
+                    verficarTamanhoEAplicarCor();
+                });
+           })
+       </script>
+   </body>
+
+</html>

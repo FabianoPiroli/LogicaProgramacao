@@ -26,7 +26,9 @@
             $(function(){
                 var index = 0;
                 $('.pai .filho').each(function(){
-                    console.log(index%2);
+                    if(index % 2 == 0){
+                        $(this).css('background-color', 'red');
+                    }
                     index++;
                 })
             })
